@@ -1,5 +1,4 @@
 # omml-project
-# Project
 
 # 1. Introduction
 
