@@ -88,3 +88,85 @@ S = cG^{1/2}_T /tr(G^{1/2}_T).
 $$
 
 ![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%203.png)
+
+# 5. Adam
+
+Adam( Adaptive Moment Estimation)
+
+Adam is a child of Adagrad. Adam takes 3 parameters:
+
+- α - learning rate
+- β1 - heavy-ball style momentum
+- β2 - controller the decay
+
+Taking β1 = 0, β2 = 1 and αn = α gives Adagrad.
+
+The main idea is to find learning rate for each parameter of the network
+
+In expectation, the squared norm of the objective gradient averaged over the trajectory has an upper-bound which is explicit in the constants of the problem, parameters of the optimizer, the dimension d, and the total number of iterations N.
+This bound can be made arbitrarily small, and with the right hyper-parameters, Adam can converge with the rate of convergence O(d ln(N)/√N)
+
+## 5.1 **Key-points**
+
+In expectation, the squared norm of the objective gradient averaged over the trajectory has an upper-bound which is explicit in the constants of the problem, parameters of the optimizer, the dimension d, and the total number of iterations N.
+This bound can be made arbitrarily small, and with the right hyper-parameters, Adam can converge with the rate of convergence O(d ln(N)/√N)
+
+While Adagrad is asymptotically optimal, it also lead to a slower decrease of the term proportional to F (x0) − F∗, as 1/√N instead of 1/N for Adam
+
+Adam will not converge with its default parameters. It is however possible to choose α and β2 to achieve an critical point for arbitrarily small and, for a known time horizon, they can be chosen to obtain the exact same bound as Adagrad.
+
+## 5.2 **Experiments. Toy example**
+
+We take (Q_i)i∈[6], Bernoulli variables with P [Q_i = 1] = p_i
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%204.png)
+
+10^6 iterations with batch size 1 when varying either
+
+α, 1 − β1 or 1 − β2 through a range of 13 values uniformly spaced in log-scale between 10^−6 and 1. When varying
+
+- α, we take β1 = 0 and β2 = 1 − 10−6.
+- β1, we take α = 10−5 and β2 = 1 − 10−6 (i.e. β2 is so that we are in the Adagrad-like regime).
+- β2, we take β1 = 0 and α = 10−6.
+
+## 5.2.1 Experiments. Toy example. Results
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%205.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%206.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%207.png)
+
+## 5.3 **Experiments. CIFAR-10 CNN**
+
+- α - 10^−6 and 10^−2 with 9 values,
+- 1 − β1 the range is from 10^−5 to 0.3 with 9 values,
+- 1 − β2, from 10^−6 to 10^−1 with 9 values
+- batch size 128
+- CNN model for object classification
+
+## 5.3.1 Experiments. **CIFAR-10 CNN.** Results
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%208.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%209.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2010.png)
+
+# 6. AdaGRAD
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2011.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2012.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2013.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2014.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2015.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2016.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2017.png)
+
+![Untitled](Project%20504f710ab17b443da55cc9c10ec371a8/Untitled%2018.png)
